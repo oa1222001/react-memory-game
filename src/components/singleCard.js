@@ -1,15 +1,17 @@
 import classes from "./singleCard.module.css";
-const SingleCard = ({ card, handleChoice }) => {
+const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
-    handleChoice(card);
+    if (!disabled) {
+      handleChoice(card);
+    }
   };
   return (
-    <div className="card">
-      <div>
-        <img src={card.src} className="front" alt="card front" />
+    <div className={classes.card}>
+      <div className={flipped ? classes.flipped : ""}>
+        <img src={card.src} className={classes.front} alt="card front" />
         <img
           src="../img/cover.png"
-          className="back"
+          className={classes.back}
           onClick={handleClick}
           alt="card back"
         />
